@@ -461,6 +461,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSearch();
     loadKeywordsData();
     
+    // Initialize mobile optimizations
+    initializeMobileOptimizations();
 
 });
 
@@ -1231,3 +1233,250 @@ function showNoResults(query) {
     }
 }
 
+
+// Mobile optimizations
+function initializeMobileOptimizations() {
+    // Touch event support for menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    if (menuToggle) {
+        // Add touch support
+        menuToggle.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            this.click();
+        }, { passive: false });
+
+        // Add keyboard support
+        menuToggle.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    }
+
+    // Improve touch scrolling
+    document.body.style.webkitOverflowScrolling = 'touch';
+
+    // Prevent zoom on input focus (iOS)
+    const inputs = document.querySelectorAll('input[type="text"], input[type="search"]');
+    inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            if (window.innerWidth < 768) {
+                const viewport = document.querySelector('meta[name="viewport"]');
+                if (viewport) {
+                    viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+                }
+            }
+        });
+
+        input.addEventListener('blur', function() {
+            if (window.innerWidth < 768) {
+                const viewport = document.querySelector('meta[name="viewport"]');
+                if (viewport) {
+                    viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes');
+                }
+            }
+        });
+    });
+
+    // Add swipe gesture for hero slider on mobile
+    let startX = 0;
+    let startY = 0;
+    let isScrolling = false;
+
+    const heroSlider = document.querySelector('.hero-slider');
+    if (heroSlider) {
+        heroSlider.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            isScrolling = false;
+        }, { passive: true });
+
+        heroSlider.addEventListener('touchmove', function(e) {
+            if (!startX || !startY) return;
+
+            const diffX = Math.abs(e.touches[0].clientX - startX);
+            const diffY = Math.abs(e.touches[0].clientY - startY);
+
+            if (diffY > diffX) {
+                isScrolling = true;
+            }
+        }, { passive: true });
+
+        heroSlider.addEventListener('touchend', function(e) {
+            if (isScrolling) return;
+
+            const endX = e.changedTouches[0].clientX;
+            const diffX = startX - endX;
+
+            if (Math.abs(diffX) > 50) { // Minimum swipe distance
+                if (diffX > 0) {
+                    // Swipe left - next slide
+                    nextSlide();
+                } else {
+                    // Swipe right - previous slide
+                    previousSlide();
+                }
+            }
+
+            startX = 0;
+            startY = 0;
+            isScrolling = false;
+        }, { passive: true });
+    }
+
+    // Optimize images for mobile
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.loading = 'lazy';
+        img.decoding = 'async';
+    });
+
+    // Add touch feedback to buttons
+    const buttons = document.querySelectorAll('.btn, .category-card, .product-card');
+    buttons.forEach(button => {
+        button.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.98)';
+        }, { passive: true });
+
+        button.addEventListener('touchend', function() {
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        }, { passive: true });
+
+        button.addEventListener('touchcancel', function() {
+            this.style.transform = '';
+        }, { passive: true });
+    });
+
+    // Improve dropdown menu for mobile
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    if (dropdownMenu) {
+        // Close menu on swipe up
+        let menuStartY = 0;
+        dropdownMenu.addEventListener('touchstart', function(e) {
+            menuStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        dropdownMenu.addEventListener('touchend', function(e) {
+            const endY = e.changedTouches[0].clientY;
+            const diffY = menuStartY - endY;
+
+            if (diffY > 100) { // Swipe up to close
+                this.classList.remove('active');
+            }
+        }, { passive: true });
+    }
+
+    // Add orientation change handler
+    window.addEventListener('orientationchange', function() {
+        setTimeout(() => {
+            // Recalculate hero height
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.height = window.innerHeight + 'px';
+                setTimeout(() => {
+                    hero.style.height = '';
+                }, 500);
+            }
+        }, 100);
+    });
+
+    // Improve search suggestions for mobile
+    const searchSuggestions = document.getElementById('search-suggestions');
+    if (searchSuggestions) {
+        // Close suggestions on scroll
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                if (window.innerWidth < 768) {
+                    searchSuggestions.style.display = 'none';
+                }
+            }, 100);
+        }, { passive: true });
+    }
+}
+
+// Helper functions for hero slider swipe
+function nextSlide() {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-slider-dot');
+    let currentSlide = 0;
+
+    // Find current slide
+    slides.forEach((slide, index) => {
+        if (slide.classList.contains('active')) {
+            currentSlide = index;
+        }
+    });
+
+    // Move to next slide
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+
+    currentSlide = (currentSlide + 1) % slides.length;
+
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+}
+
+function previousSlide() {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-slider-dot');
+    let currentSlide = 0;
+
+    // Find current slide
+    slides.forEach((slide, index) => {
+        if (slide.classList.contains('active')) {
+            currentSlide = index;
+        }
+    });
+
+    // Move to previous slide
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+
+    currentSlide = currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
+
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+}
+
+// Performance optimizations
+function optimizePerformance() {
+    // Debounce scroll events
+    let scrollTimeout;
+    const originalScrollHandler = window.onscroll;
+    
+    window.addEventListener('scroll', function() {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            if (originalScrollHandler) originalScrollHandler();
+        }, 16); // ~60fps
+    }, { passive: true });
+
+    // Lazy load images when they come into view
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+}
+
+// Initialize performance optimizations
+document.addEventListener('DOMContentLoaded', optimizePerformance);

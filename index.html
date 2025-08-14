@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#d4af37">
     <meta name="description" content="Topkapı Davetiye - Düğün, nişan ve sünnet davetiyesi. Özel günleriniz için zarif ve şık davetiye tasarımları. İstanbul Bahçelievler.">
     <meta name="keywords" content="davetiye, düğün davetiyesi, nişan davetiyesi, sünnet davetiyesi, İstanbul, Bahçelievler">
     <title>Topkapı Davetiye - Özel Günlerinizi, Özel Davetiyelerimizle Taçlandırın</title>
@@ -23,7 +25,7 @@
         <nav class="navbar">
             <div class="nav-container">
                 <!-- Mobile Menu Button -->
-                <div class="menu-toggle" id="menu-toggle">
+                <div class="menu-toggle" id="menu-toggle" role="button" aria-label="Menüyü aç/kapat" tabindex="0">
                     <i class="fas fa-bars"></i>
                 </div>
 
@@ -39,8 +41,8 @@
                 <!-- Search Bar -->
                 <div class="search-container">
                     <div class="search-box">
-                        <input type="text" id="search-input" placeholder="Ürün detayları ile arama yapınız." autocomplete="off">
-                        <button class="search-btn" id="search-btn">
+                        <input type="text" id="search-input" placeholder="Ürün ara..." autocomplete="off" aria-label="Ürün arama">
+                        <button class="search-btn" id="search-btn" aria-label="Ara">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
