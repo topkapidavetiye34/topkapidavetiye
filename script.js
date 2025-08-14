@@ -489,13 +489,15 @@ function initializeMenu() {
         }
     });
     
+    // Direct category links - no submenu toggle needed
+
     // Submenu links
     const submenuLinks = document.querySelectorAll('.submenu-link');
     submenuLinks.forEach(function(link) {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const category = this.getAttribute('data-category');
-            console.log('Submenu clicked:', category);
+            console.log('Category link clicked:', category);
             showProducts(category);
             dropdownMenu.classList.remove('active');
         });
@@ -1365,6 +1367,14 @@ function initializeMobileOptimizations() {
 
             if (diffY > 100) { // Swipe up to close
                 this.classList.remove('active');
+                // Close all submenus
+                document.querySelectorAll('.has-submenu.active').forEach(function(activeLink) {
+                    activeLink.classList.remove('active');
+                    const submenu = activeLink.parentElement.querySelector('.submenu');
+                    if (submenu) {
+                        submenu.classList.remove('active');
+                    }
+                });
             }
         }, { passive: true });
     }
