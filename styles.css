@@ -75,6 +75,35 @@ body {
     color: #333;
 }
 
+/* Navigation Phone */
+.nav-phone {
+    display: flex;
+    align-items: center;
+}
+
+.phone-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.phone-link:hover {
+    background-color: #d4af37;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.phone-link i {
+    font-size: 1rem;
+}
+
 .logo {
     display: flex;
     justify-content: center;

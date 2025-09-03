@@ -4,7 +4,7 @@
   <!-- Ana Sayfa -->
   <url>
     <loc>https://topkapidavetiye.com/</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,7 +12,7 @@
   <!-- Hakkımızda -->
   <url>
     <loc>https://topkapidavetiye.com/#about</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -20,7 +20,7 @@
   <!-- Davetiye Modelleri -->
   <url>
     <loc>https://topkapidavetiye.com/#catalog</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -28,7 +28,7 @@
   <!-- Fiyat Listesi -->
   <url>
     <loc>https://topkapidavetiye.com/#price-list</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -36,7 +36,7 @@
   <!-- İletişim -->
   <url>
     <loc>https://topkapidavetiye.com/#contact</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
