@@ -46,6 +46,7 @@ body {
     margin: 0 auto;
     padding: 0 20px;
     height: 70px;
+    position: relative;
 }
 
 .nav-center {
@@ -79,25 +80,30 @@ body {
 .nav-phone {
     display: flex;
     align-items: center;
+    position: absolute;
+    left: 120px; /* Hamburger menüden sonra yerleştir */
+    z-index: 10;
 }
 
 .phone-link {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #d4af37;
+    color: white; /* Sürekli beyaz renk */
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
     padding: 8px 12px;
     border-radius: 5px;
+    background-color: #d4af37; /* Sürekli altın renk arka plan */
     transition: all 0.3s ease;
+    transform: translateY(-1px); /* Sürekli hafif yükseltilmiş görünüm */
 }
 
 .phone-link:hover {
-    background-color: #d4af37;
+    background-color: #b8941f; /* Hover'da daha koyu altın */
     color: white;
-    transform: translateY(-1px);
+    transform: translateY(-2px); /* Hover'da biraz daha yükselt */
 }
 
 .phone-link i {
@@ -458,33 +464,33 @@ body {
     z-index: 2;
     position: relative;
     animation: fadeInUp 1s ease;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 15px;
-    padding: 2rem 1.8rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    max-width: 650px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Daha hafif gölge */
+    background: rgba(255, 255, 255, 0.05); /* Daha saydam */
+    backdrop-filter: blur(10px); /* Biraz daha az blur */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Daha saydam border */
+    border-radius: 12px; /* Biraz daha küçük radius */
+    padding: 1.5rem 1.3rem; /* Daha küçük padding */
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15); /* Daha hafif gölge */
+    max-width: 550px; /* Daha küçük genişlik */
     margin: 0 auto;
     transition: all 0.3s ease;
 }
 
 .hero-content:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
-    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px); /* Daha az hareket */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Daha hafif gölge */
+    background: rgba(255, 255, 255, 0.08); /* Daha saydam hover */
 }
 
 .hero-title {
     font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+    font-size: 2.8rem; /* Küçültüldü */
+    font-weight: 600; /* Biraz daha ince */
+    margin-bottom: 0.8rem; /* Margin küçültüldü */
     animation: slideInDown 1s ease;
     text-shadow:
-        3px 3px 6px rgba(0, 0, 0, 0.9),
-        0 0 20px rgba(255, 255, 255, 0.3);
+        2px 2px 4px rgba(0, 0, 0, 0.8), /* Daha hafif gölge */
+        0 0 15px rgba(255, 255, 255, 0.2);
     color: white;
     position: relative;
 }
@@ -492,25 +498,25 @@ body {
 .hero-title::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -8px; /* Daha yakın */
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-    border-radius: 2px;
+    width: 70px; /* Daha kısa */
+    height: 2px; /* Daha ince */
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent); /* Daha saydam */
+    border-radius: 1px;
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    opacity: 0.95;
+    font-size: 1.1rem; /* Küçültüldü */
+    margin-bottom: 1.5rem; /* Margin küçültüldü */
+    opacity: 0.9; /* Biraz daha saydam */
     animation: fadeIn 1s ease 0.5s both;
     text-shadow:
-        2px 2px 4px rgba(0, 0, 0, 0.8),
-        0 0 15px rgba(255, 255, 255, 0.2);
+        1px 1px 3px rgba(0, 0, 0, 0.7), /* Daha hafif gölge */
+        0 0 10px rgba(255, 255, 255, 0.15);
     font-weight: 300;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px; /* Daha az harf aralığı */
 }
 
 .hero-buttons {
