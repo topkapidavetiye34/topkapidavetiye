@@ -236,11 +236,11 @@ const productsData = [
                             "fiyat":  "458, 00 TL  (100 Adet)"
                         },
                         {
-                            "urun_kodu":  "3023-MÃ¼hÃ¼rsÃ¼z",
+                            "urun_kodu":  "3023-Mühürsüz",
                             "fiyat":  "968, 00 TL  (100 Adet)"
                         },
                         {
-                            "urun_kodu":  "3026-MÃ¼hÃ¼rsÃ¼z",
+                            "urun_kodu":  "3026-Mühürsüz",
                             "fiyat":  "1148, 00 TL  (100 Adet)"
                         },
                         {
@@ -699,10 +699,10 @@ function showProducts(category) {
     
     // Update title
     const categoryNames = {
-        'Normal': 'DÃ¼ÄŸÃ¼n & NiÅŸan Davetiyesi',
-        'Sunnet': 'SÃ¼nnet Davetiyesi'
+        'Normal': 'Düğün & Nişan Davetiyesi',
+        'Sunnet': 'Sünnet Davetiyesi'
     };
-    productsTitle.textContent = categoryNames[category] || 'ÃœrÃ¼nler';
+    productsTitle.textContent = categoryNames[category] || 'Ürünler';
     
     // Clear previous products
     productsGrid.innerHTML = '';
@@ -722,7 +722,7 @@ function showProducts(category) {
         });
     } else {
         console.error('No products found for category:', category);
-        productsGrid.innerHTML = '<p style="text-align: center; padding: 2rem;">Bu kategoride Ã¼rÃ¼n bulunamadÄ±.</p>';
+        productsGrid.innerHTML = '<p style="text-align: center; padding: 2rem;">Bu kategoride ürün bulunamadı.</p>';
     }
     
     // Scroll to products section
@@ -740,19 +740,19 @@ function createProductCard(product) {
     card.innerHTML = `
         <div class="product-image">
             <img src="fotos/${product.urun_kodu}.jpg" 
-                 alt="ÃœrÃ¼n ${product.urun_kodu}" 
-                 onerror="this.src='https://via.placeholder.com/300x300?text=ÃœrÃ¼n+${product.urun_kodu}'">
+                 alt="Ürün ${product.urun_kodu}" 
+                 onerror="this.src='https://via.placeholder.com/300x300?text=Ürün+${product.urun_kodu}'">
             <div class="product-overlay">
                 <button class="detail-btn" onclick="showProductDetail('${product.urun_kodu}', '${product.fiyat.replace(/'/g, "\\'")}')">
-                    <i class="fas fa-eye"></i> DetaylarÄ± GÃ¶r
+                    <i class="fas fa-eye"></i> Detayları Gör
                 </button>
                 <a href="${whatsappLink}" target="_blank" class="order-btn">
-                    <i class="fab fa-whatsapp"></i> Hemen SipariÅŸ Ver
+                    <i class="fab fa-whatsapp"></i> Hemen Sipariş Ver
                 </a>
             </div>
         </div>
         <div class="product-info">
-            <div class="product-code">ÃœrÃ¼n Kodu: ${product.urun_kodu}</div>
+            <div class="product-code">Ürün Kodu: ${product.urun_kodu}</div>
             <div class="product-price">${product.fiyat}</div>
         </div>
     `;
@@ -783,9 +783,9 @@ function showProductDetail(productCode, productPrice) {
     
     if (detailImage) {
         detailImage.src = `fotos/${productCode}.jpg`;
-        detailImage.alt = `ÃœrÃ¼n ${productCode}`;
+        detailImage.alt = `Ürün ${productCode}`;
         detailImage.onerror = function() {
-            this.src = `https://via.placeholder.com/600x600?text=ÃœrÃ¼n+${productCode}`;
+            this.src = `https://via.placeholder.com/600x600?text=Ürün+${productCode}`;
         };
     }
     
@@ -917,16 +917,16 @@ let keywordsData = [];
 
 // Embedded keywords data as fallback
 const embeddedKeywordsData = [
-    {"urun_kodu": "3052", "anahtar_kelimeler": ["yeÅŸil", "altÄ±n", "Ã§iÃ§ekli", "modern", "elegant", "minimalist"]},
-    {"urun_kodu": "1434", "anahtar_kelimeler": ["beyaz", "Ã§iÃ§ekli", "kaligrafik", "modern", "elegant", "minimalist"]},
-    {"urun_kodu": "1357", "anahtar_kelimeler": ["kÄ±rmÄ±zÄ±", "beyaz", "kalp", "minimalist", "modern", "kaligrafik", "elegant"]},
-    {"urun_kodu": "2018", "anahtar_kelimeler": ["bej", "beyaz", "minimalist", "kaligrafik", "modern", "elegant", "doÄŸal", "ahÅŸap dokulu"]},
-    {"urun_kodu": "2575", "anahtar_kelimeler": ["siyah", "beyaz", "altÄ±n", "minimalist", "kaligrafik", "elegant", "vintage"]},
-    {"urun_kodu": "1035", "anahtar_kelimeler": ["bej", "altÄ±n folyo", "minimalist", "kaligrafik", "elegant", "doÄŸal", "ÅŸÄ±k"]},
+    {"urun_kodu": "3052", "anahtar_kelimeler": ["yeşil", "altın", "çiçekli", "modern", "elegant", "minimalist"]},
+    {"urun_kodu": "1434", "anahtar_kelimeler": ["beyaz", "çiçekli", "kaligrafik", "modern", "elegant", "minimalist"]},
+    {"urun_kodu": "1357", "anahtar_kelimeler": ["kırmızı", "beyaz", "kalp", "minimalist", "modern", "kaligrafik", "elegant"]},
+    {"urun_kodu": "2018", "anahtar_kelimeler": ["bej", "beyaz", "minimalist", "kaligrafik", "modern", "elegant", "doğal", "ahşap dokulu"]},
+    {"urun_kodu": "2575", "anahtar_kelimeler": ["siyah", "beyaz", "altın", "minimalist", "kaligrafik", "elegant", "vintage"]},
+    {"urun_kodu": "1035", "anahtar_kelimeler": ["bej", "altın folyo", "minimalist", "kaligrafik", "elegant", "doğal", "şık"]},
     {"urun_kodu": "1009", "anahtar_kelimeler": ["lacivert", "beyaz", "geometrik", "modern", "kaligrafik", "elegant"]},
-    {"urun_kodu": "1535", "anahtar_kelimeler": ["beyaz", "yeÅŸil", "minimalist", "kaligrafik", "elegant", "doÄŸal", "ÅŸÄ±k"]},
-    {"urun_kodu": "5040", "anahtar_kelimeler": ["antrasit", "ÅŸeffaf", "minimalist", "modern", "kaligrafik", "elegant", "doÄŸal"]},
-    {"urun_kodu": "5100", "anahtar_kelimeler": ["bej", "altÄ±n folyo", "minimalist", "modern", "elegant", "doÄŸal dokulu"]}
+    {"urun_kodu": "1535", "anahtar_kelimeler": ["beyaz", "yeşil", "minimalist", "kaligrafik", "elegant", "doğal", "şık"]},
+    {"urun_kodu": "5040", "anahtar_kelimeler": ["antrasit", "şeffaf", "minimalist", "modern", "kaligrafik", "elegant", "doğal"]},
+    {"urun_kodu": "5100", "anahtar_kelimeler": ["bej", "altın folyo", "minimalist", "modern", "elegant", "doğal dokulu"]}
 ];
 
 // Load keywords data
@@ -953,7 +953,7 @@ async function loadKeywordsData() {
 
 // Show default suggestions if data loading fails
 function showDefaultSuggestions() {
-    const defaultKeywords = ['beyaz', 'elegant', 'minimalist', 'modern', 'altÄ±n', 'Ã§iÃ§ekli', 'kaligrafik', 'doÄŸal'];
+    const defaultKeywords = ['beyaz', 'elegant', 'minimalist', 'modern', 'altın', 'çiçekli', 'kaligrafik', 'doğal'];
     const suggestionsList = document.getElementById('suggestions-list');
     if (suggestionsList) {
         suggestionsList.innerHTML = defaultKeywords
@@ -1139,7 +1139,7 @@ function showSearchResults(products, query) {
     
     // Update title
     if (productsTitle) {
-        productsTitle.textContent = `"${query}" iÃ§in ${products.length} sonuÃ§ bulundu`;
+        productsTitle.textContent = `"${query}" için ${products.length} sonuç bulundu`;
     }
     
     // Clear and populate products grid
@@ -1177,19 +1177,19 @@ function createSearchProductCard(product) {
     card.innerHTML = `
         <div class="product-image">
             <img src="fotos/${product.urun_kodu}.jpg" 
-                 alt="ÃœrÃ¼n ${product.urun_kodu}" 
-                 onerror="this.src='https://via.placeholder.com/300x300?text=ÃœrÃ¼n+${product.urun_kodu}'">
+                 alt="Ürün ${product.urun_kodu}" 
+                 onerror="this.src='https://via.placeholder.com/300x300?text=Ürün+${product.urun_kodu}'">
             <div class="product-overlay">
                 <button class="detail-btn" onclick="showProductDetail('${product.urun_kodu}', '${product.fiyat.replace(/'/g, "\\'")}')">
-                    <i class="fas fa-eye"></i> DetaylarÄ± GÃ¶r
+                    <i class="fas fa-eye"></i> Detayları Gör
                 </button>
                 <a href="${whatsappLink}" target="_blank" class="order-btn">
-                    <i class="fab fa-whatsapp"></i> Hemen SipariÅŸ Ver
+                    <i class="fab fa-whatsapp"></i> Hemen Sipariş Ver
                 </a>
             </div>
         </div>
         <div class="product-info">
-            <div class="product-code">ÃœrÃ¼n Kodu: ${product.urun_kodu}</div>
+            <div class="product-code">Ürün Kodu: ${product.urun_kodu}</div>
             <div class="product-price">${product.fiyat}</div>
             ${keywordsHtml}
         </div>
@@ -1215,16 +1215,16 @@ function showNoResults(query) {
     
     // Update title and show no results message
     if (productsTitle) {
-        productsTitle.textContent = `"${query}" iÃ§in sonuÃ§ bulunamadÄ±`;
+        productsTitle.textContent = `"${query}" için sonuç bulunamadı`;
     }
     
     if (productsGrid) {
         productsGrid.innerHTML = `
             <div style="text-align: center; padding: 3rem; grid-column: 1 / -1;">
                 <i class="fas fa-search" style="font-size: 3rem; color: #ccc; margin-bottom: 1rem;"></i>
-                <h3 style="color: #666; margin-bottom: 1rem;">AradÄ±ÄŸÄ±nÄ±z kriterlere uygun Ã¼rÃ¼n bulunamadÄ±</h3>
-                <p style="color: #999; margin-bottom: 2rem;">FarklÄ± anahtar kelimeler deneyebilir veya Ã¼rÃ¼n kodunu kontrol edebilirsiniz.</p>
-                <button class="btn btn-primary" onclick="showCatalog()">TÃ¼m ÃœrÃ¼nleri GÃ¶rÃ¼ntÃ¼le</button>
+                <h3 style="color: #666; margin-bottom: 1rem;">Aradığınız kriterlere uygun ürün bulunamadı</h3>
+                <p style="color: #999; margin-bottom: 2rem;">Farklı anahtar kelimeler deneyebilir veya ürün kodunu kontrol edebilirsiniz.</p>
+                <button class="btn btn-primary" onclick="showCatalog()">Tüm Ürünleri Görüntüle</button>
             </div>
         `;
     }
